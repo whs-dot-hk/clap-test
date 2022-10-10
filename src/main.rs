@@ -4,8 +4,11 @@ use clap::Parser;
 #[command(author, version, about, long_about = None)]
 struct Cli {
     name: Option<String>,
-    #[arg(short, long, value_name = "AMI_ID", required = true)]
+
+    #[arg(short, long, value_name = "AMI_ID", required = true, group = "image")]
     ami_id: Option<String>,
+    #[arg(short, long, required = true, group = "image")]
+    default: bool,
 }
 
 fn main() {
@@ -13,4 +16,5 @@ fn main() {
     
     println!("{:?}", cli.name);
     println!("{:?}", cli.ami_id);
+    println!("{:?}", cli.default);
 }
